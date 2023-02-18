@@ -21,7 +21,7 @@ async function main(){
                 email VARCHAR(100) UNIQUE NOT NULL,
                 name VARCHAR(50) NOT NULL,
                 surname VARCHAR(50) NOT NULL,
-               password VARCHAR(100) NOT NULL,
+                password VARCHAR(100) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             );
            
@@ -34,17 +34,16 @@ async function main(){
             );
          CREATE TABLE Like (
                 id INTEGRED PRIMARY KEY AUTO_INCREMEN,
-                user_id VARCHAR(100) UNIQUE NOT NULL,
                 photo_id VARCHAR(100) UNIQUE NOT NULL,
-                FOREIGN KEY (user_id) REFERENCES users(id),
+                FOREIGN KEY (Photo_id) REFERENCES Photo(id),
                
             );
          CREATE TABLE Comment (
                 id INTEGRED PRIMARY KEY AUTO_INCREMEN,
-                user_id VARCHAR(100) UNIQUE NOT NULL,
+                Photo_id VARCHAR(100) UNIQUE NOT NULL,
                 text VARCHAR(200) NOT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                FOREIGN KEY (Photo_id) REFERENCES Photo(id)
             );
            );
         `);
