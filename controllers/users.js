@@ -1,12 +1,33 @@
 const newUserController = async (req, res, next) => {
+try {
+   res.send({
+    status: 'error',
+    message: 'Not implemented'
+   });
+ } catch(error) {
+   next(error);
+ }
+};
+
+const getUserController = async (req, res, next) => {try {
+    res.send({
+     status: 'error',
+     message: 'Not implemented'
+    });
+  } catch(error) {
+    next(error);
+  }
 
 };
 
-const getUserController = async (req, res, next) => {
-
-};
-
-const loginController = async (req, res, next) => {
+const loginController = async (req, res, next) => {try {
+    res.send({
+     status: 'error',
+     message: 'Not implemented'
+    });
+  } catch(error) {
+    next(error);
+  }
 
 };
 
