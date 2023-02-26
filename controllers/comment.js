@@ -1,14 +1,3 @@
-const getCommentController = async (req, res, next) => {
-    try {
-        res.send({
-         status: 'error',
-         message: 'Not implemented'
-        });
-      } catch(error) {
-        next(error);
-      }
-};
-
 const newCommentController = async (req, res, next) => {
     try {
         res.send({
@@ -20,16 +9,6 @@ const newCommentController = async (req, res, next) => {
       }
 };
 
-const getSingleCommentController = async (req, res, next) => {
-    try {
-        res.send({
-         status: 'error',
-         message: 'Not implemented'
-        });
-      } catch(error) {
-        next(error);
-      }
-};
 
 const deleteCommentController = async (req, res, next) => {
     try {
@@ -43,8 +22,6 @@ const deleteCommentController = async (req, res, next) => {
 };
 
 module.exports = {
-    getCommentController,
     newCommentController,
-    getSingleCommentController,
     deleteCommentController,
 };

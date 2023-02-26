@@ -1,5 +1,14 @@
+const {generateError} = require('../helpers');
+
 const newUserController = async (req, res, next) => {
 try {
+  
+  const {email, password } = req.body;
+
+  if (!email || !password) {
+    throw generateError('Debes introducir un email y una contraseña', 400);
+  }
+
    res.send({
     status: 'error',
     message: 'Not implemented'

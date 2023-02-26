@@ -1,4 +1,4 @@
-require('dotenv').conf();
+require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
@@ -18,15 +18,11 @@ const {
 
 const {
     newLikeController,
-    getLikeController,
-    likeController,
     deleteLikeController,
 } = require('./controllers/like');
 
 const {
-    getCommentController,
     newCommentController,
-    getSingleCommentController,
     deleteCommentController,
 } = require('./controllers/comment');
 
@@ -49,14 +45,10 @@ app.delete('/photo/:id', deletePhotoController);
 
 //Rutas likes
 app.post('/like', newLikeController);
-app.get('like/:id', getLikeController);
-app.post('/like', likeController);
 app.delete('/like/:id', deleteLikeController);
 
 //Rutas Comment
-app.get('/', getCommentController);
-app.post('/', newCommentController);
-app.get('/comment/:id', getSingleCommentController);
+app.post('/comment', newCommentController);
 app.delete('/comment/:id', deleteCommentController);
 
 
@@ -79,7 +71,7 @@ app.use((error, req, res, next) => {
 })
 
 //lanzamos el serivdor
-
-app.listen(3000, () => 
- console.log('Servidor funcionando!')
+const PORT = 4000;
+app.listen(PORT, () => 
+ console.log(`Servidor funcionando en http://localhost:${PORT}`)
 );
