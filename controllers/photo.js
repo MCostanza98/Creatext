@@ -11,10 +11,12 @@ const getPhotoController = async (req, res, next) => {
 };
 
 const newPhotoController = async (req, res, next) => {
-    try {
+   console.log(req.headers); 
+  try {
+
         res.send({
          status: 'error',
-         message: 'Not implemented'
+         message: 'New photo'
         });
       } catch(error) {
         next(error);
@@ -37,7 +39,7 @@ const deletePhotoController = async (req, res, next) => {
         res.send({
          status: 'error',
          message: 'Not implemented'
-        });
+        }); 
       } catch(error) {
         next(error);
       }

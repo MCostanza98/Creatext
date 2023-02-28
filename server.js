@@ -16,6 +16,8 @@ const {
     deletePhotoController,
 } = require('./controllers/photo');
 
+const {authUser} = require('./middlewares/auth');
+
 const {
     newLikeController,
     deleteLikeController,
@@ -38,8 +40,8 @@ app.post('/login', loginController);
 
 //Rutas photos
 
+app.post('/', authUser, newPhotoController);
 app.get('/', getPhotoController);
-app.post('/', newPhotoController);
 app.get('/photo/:id', getSinglePhotoController);
 app.delete('/photo/:id', deletePhotoController);
 
