@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as UnformWeb} from '@unform/web';
 
 export const Container = styled.div`
 height: 100vh;
@@ -27,7 +28,7 @@ export const FromContainer = styled.div`
     max-width: 350px;
   }
 `
-export const Form = styled.div`
+export const Form = styled(UnformWeb)`
 background-color: #fff;
 width: 100%;
 border: 1px solid #e6e6e6;
@@ -73,6 +74,9 @@ hr{
 }
 p{
     color:#999;
+}
+h2{
+  color:#ff0080;
 }
 `
 
