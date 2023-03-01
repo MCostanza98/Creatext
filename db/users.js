@@ -1,6 +1,6 @@
 const { generateError } = require('../helpers');
-const { getConnection } = require('/db');
-const { bcrypt } = require('bcrypt');
+const { getConnection } = require('./db');
+const  bcrypt  = require('bcrypt');
 
 const getUserByEmail = async (email) => {
     let connection;
@@ -48,10 +48,10 @@ const getUserById = async (id) => {
  
 // usuario y id 
 const createUser = async (email, password) => {
-    let connection;
+   
 
-    try {
-        connection = await getConnection();
+
+        const connection = await getConnection();
 
         //comprobar que no exista otro usuario
        const [user] = await connection.query(
@@ -79,9 +79,7 @@ const createUser = async (email, password) => {
         );
         //devolver la id
         return newUser.insertId;
-    } finally {
-        if (connection) connection.release();
-    }
+   
 };
 
 module.exports = {

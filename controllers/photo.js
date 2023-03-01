@@ -15,7 +15,7 @@ const newPhotoController = async (req, res, next) => {
   try {
 
         res.send({
-         status: 'error',
+         status: 'ok',
          message: 'New photo'
         });
       } catch(error) {
