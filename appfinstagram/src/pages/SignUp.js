@@ -1,5 +1,8 @@
 import React, { useRef , useCallback } from 'react';
 import{ Link } from 'react-router-dom';
+import * as Yup from 'yup'; //para validar mi formulario.
+
+import getValidationErrors from '../utils/getValidationErrors';
 
 import gif from '../assets/mobilegif.gif';
 import Input from "../componentes/input";
@@ -12,8 +15,27 @@ const SignUp = () => {
 
    const formRef = useRef(null);
 
-   const handLeSubmit = useCallback((data) =>{
-       console.log(data);
+   const handLeSubmit = useCallback( async (data) =>{
+       try{
+         formRef.current.setErrors({});
+
+         const schema = Yup.object().shape({
+            name: Yup.string().required('Nombre obligatorio'),
+            email: Yup.string().required('Correo obligatorio').email('Correo inválido'),
+            username: Yup.string().required('Username obligatorio'),
+            password:Yup.string().required('Password obligatorio'),
+         })
+            await schema.validate(data, { abortEarly: false });//para que nos traiga todas las validaciones.
+
+       }catch (error){
+ 
+        if(error instanceof Yup.ValidationError) {
+         const errors = getValidationErrors(error);
+         formRef.current.setErrors(errors);
+         return;
+        }
+
+       }
    } ,[] )
    return(
     <Container>
