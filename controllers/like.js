@@ -3,9 +3,13 @@ const { getLikeById, deleteLikeById } = require('../db/photo');
 
 const newLikeController = async (req, res, next) => {
   try {
+    const { id } = req.params;
+
+    const user = await getLikeById(id);
+
     res.send({
-      status: 'error',
-      message: 'Not implemented',
+      status: 'ok',
+      message: user,
     });
   } catch (error) {
     next(error);

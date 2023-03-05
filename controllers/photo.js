@@ -29,15 +29,11 @@ const newPhotoController = async (req, res, next) => {
   try {
     let imageFileName;
     if (req.files.image) {
-      //crear el path del directorio
       const uploadsDir = path.join(__dirname, '../uploads');
       console.log(uploadsDir);
-      //crear el directorio si no existe
       await createPathIfNotExist(uploadsDir);
-      // procersar la imagen
       const image = sharp(req.files.image.data);
       image.resize(1000);
-      // guardo la imagen con un nombre aleatorio en el directorio uploads
       imageFileName = `${nanoId(24)}.jpg`;
 
       await image.toFile(path.join(uploadsDir, imageFileName));

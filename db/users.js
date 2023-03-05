@@ -52,7 +52,6 @@ const getUserById = async (id) => {
 const createUser = async (email, password) => {
   const connection = await getConnection();
 
-  //comprobar que no exista otro usuario
   const [user] = await connection.query(
     `
             SELECT id FROM user WHERE email = ?
@@ -64,16 +63,13 @@ const createUser = async (email, password) => {
     throw generateError('Ya existe un usuario con ese email', 409);
   }
 
-  //encriptar la password
   const passwordHash = await bcrypt.hash(password, 8);
-  //crear el usuario
   const [newUser] = await connection.query(
     `
             INSERT INTO user (email, password) VALUES(?, ?)
             `,
     [email, passwordHash]
   );
-  //devolver la id
   return newUser.insertId;
 };
 

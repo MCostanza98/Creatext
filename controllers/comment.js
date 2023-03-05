@@ -1,12 +1,11 @@
 const { createComment } = require('../db/comment');
 const { generateError } = require('../helpers');
+const { getCommentById, deleteCommentById } = require('../db/photo');
 
 const newCommentController = async (req, res, next) => {
   try {
-    const { id } = req.userId; //esta es la id de usuario
-    const { text, photoId } = req.body; //de aquí sacas el texto y la id de la foto
-
-    //comprobar que existe una foto con el id photoId y si no dar un 404
+    const { id } = req.userId;
+    const { text, photoId } = req.body;
 
     if (!text || text.length > 100) {
       throw generateError(
@@ -32,9 +31,23 @@ const newCommentController = async (req, res, next) => {
 
 const deleteCommentController = async (req, res, next) => {
   try {
+    // req.userId
+    const { id } = req.params;
+
+    const comment = await getCommentById(id);
+
+    if (req.userId !== comment.user_id) {
+      throw generateError(
+        'Estas intentando borrar un comentario que no es tuyo',
+        401
+      );
+    }
+
+    await deleteCommentById(id);
+
     res.send({
-      status: 'error',
-      message: 'Not implemented',
+      status: 'ok',
+      message: `El like con id: ${id} ha sido eliminado`,
     });
   } catch (error) {
     next(error);
