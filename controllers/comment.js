@@ -15,7 +15,11 @@ const newCommentController = async (req, res, next) => {
       );
     }
 
-    const commentId = await createComment(id, photoId, text);
+    if (req.files) {
+      //
+    }
+
+    const commentId = await createComment(id, text, photoId);
 
     res.send({
       status: 'ok',

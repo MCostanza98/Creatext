@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
-
+const fileUpload = require('express-fileupload');
 const {
   newUserController,
   getUserController,
@@ -30,8 +30,10 @@ const {
 
 const app = express();
 
+app.use(fileUpload());
 app.use(morgan('dev'));
 app.use(express.json());
+app.use('/uploads', express.static('./uploads'));
 
 //Rutas users
 
