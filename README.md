@@ -26,6 +26,8 @@ user
 text
 created_at
 
+Endpoints
+
 USER
 POST /users registro de usuario;
 GET user/:id devuelve la informacion del usuario;
