@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": { "start": "nodemon finstagram/db/init.db.js",
+  "scripts": {
+    "start": "nodemon finstagram/db/init.db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,5 +12,8 @@
   "devDependencies": {
     "eslint": "^8.33.0",
     "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }

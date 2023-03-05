@@ -2,7 +2,7 @@ require('dotenv').conf();
 
 const express = require('express');
 const morgan = require('morgan');
-
+const cors = require('cors');
 const {
     newUserController,
     getUserController,
@@ -31,7 +31,9 @@ const {
 } = require('./controllers/comment');
 
 const app = express();
+ 
 
+app.use(cors());// unir front con backend
 app.use(morgan('dev'));
 
 //Rutas users
